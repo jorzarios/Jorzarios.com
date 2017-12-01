@@ -3,6 +3,10 @@ var app = express()
 var nodemailer = require('nodemailer')
 var creds = require('./creds');
 
+var port = 9000;
+
+app.listen(port);
+console.log('listening on port', port);
 var transporter = nodemailer.createTransport({
     service : 'gmail',
     host: "smtp.gmail-com",
@@ -11,8 +15,6 @@ var transporter = nodemailer.createTransport({
       pass: creds.pass
     }
   })
-
-app.use(express.static('public'))
 
 app.get('/', function (req, res) {
  res.sendFile(__dirname+'/views/index.html');
@@ -49,8 +51,8 @@ app.get('/send', function (req,res) {
  })
 })
 
-app.listen(80, function (err) {
+app.listen(port, function (err) {
   if(err) return console.log('Hubo un error'), process.exit(1);
 
-  console.log('Escuchando en el puerto 3000');
+  console.log('Escuchando en el puerto', port);
 })
