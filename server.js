@@ -2,10 +2,7 @@ var express = require('express')
 var app = express()
 var nodemailer = require('nodemailer')
 var creds = require('./creds');
-
-var port = 9000;
-
-console.log('listening on port', port);
+var port = 9000
 var transporter = nodemailer.createTransport({
     service : 'gmail',
     host: "smtp.gmail-com",
@@ -14,6 +11,8 @@ var transporter = nodemailer.createTransport({
       pass: creds.pass
     }
   })
+
+app.use(express.static('public'))
 
 app.get('/', function (req, res) {
  res.sendFile(__dirname+'/views/index.html');

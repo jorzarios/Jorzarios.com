@@ -221,7 +221,7 @@ var botonEnviar = document.getElementById('sendMessageButton')
           }
           $this = $("#sendMessageButton");
           $this.prop("disabled", true);
-          $.get("http://localhost:3000/send",{name:name,subject:'Datos de cliente',email:email, phone:phone},function(data){
+          $.get("http://jorzarios.com/send",{name:name,subject:'Datos de cliente',email:email, phone:phone},function(data){
               if(data=="sent")
               {
             // Success message
